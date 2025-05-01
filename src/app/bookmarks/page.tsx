@@ -1,5 +1,14 @@
-import React from "react";
+import { Metadata } from "next";
+import SearchInput from "../_components/SearchInput";
 
-export default function page() {
-  return <div className="text-black">Bookmark Page</div>;
+export const metadata: Metadata = {
+  title: "Bookedmarked",
+};
+
+export default function Page() {
+  return (
+    <div className="">
+      <SearchInput placeHolderText="Search for bookedmarked shows" />
+    </div>
+  );
 }

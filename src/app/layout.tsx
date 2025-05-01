@@ -20,10 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} bg-very-dark-blue antialiased flex gap-[3.6rem] min-h-screen min-w-full`}>
+      <body
+        className={`${outfit.className} bg-very-dark-blue antialiased flex gap-[3.6rem] min-h-screen min-w-full`}
+      >
         <SideNavigation />
 
-        <div className="border border-blue-500">{children}</div>
+        <div className=" border-blue-500 w-full mt-8">{children}</div>
       </body>
     </html>
   );
