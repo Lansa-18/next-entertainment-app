@@ -18,6 +18,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addVariant }: { addVariant: (name: string, value: string) => void }) {
+      addVariant('card-group-hover', ':merge(.card-group):hover &');
+    }
+  ],
 };
 export default config;
