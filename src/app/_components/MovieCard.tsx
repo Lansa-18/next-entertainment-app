@@ -21,7 +21,7 @@ export default function MovieCard({
   movieYear,
 }: MovieCardProp) {
   return (
-    <section className="relative w-[47rem] h-[23rem] card-group cursor-pointer">
+    <section className="relative w-[47rem] h-[23rem] card-group carousel-item">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -54,7 +54,7 @@ export default function MovieCard({
       <div className="group">
         <BookmarkInteract />
       </div>
-      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="opacity-0 card-group-hover:opacity-100 transition-opacity duration-300">
         <PlayOnHover />
       </div>
     </section>

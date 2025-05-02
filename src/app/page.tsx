@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import SearchInput from "./_components/SearchInput";
-import MovieCard from "./_components/MovieCard";
+// import MovieCard from "./_components/MovieCard";
+import MovieCarousel from "./_components/MovieCarousel";
 
 export const metadata: Metadata = {
   title: "All Trending Content",
@@ -16,13 +17,8 @@ export default function Page() {
           Trending
         </h2>
 
-        <div className="flex gap-10">
-          <MovieCard
-            movieName="Beyond Earth"
-            movieRating="PG"
-            movieType="Movie"
-            movieYear={2019}
-          />
+        <div className="max-w-full overflow-x-hidden">
+          <MovieCarousel />
         </div>
       </main>
     </div>

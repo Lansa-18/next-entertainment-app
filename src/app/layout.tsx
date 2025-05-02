@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${outfit.className} bg-very-dark-blue antialiased flex gap-[3.6rem] min-h-screen min-w-full`}
+        className={`${outfit.className} bg-very-dark-blue antialiased flex gap-[3.6rem] min-h-screen max-w-full`}
       >
         <SideNavigation />
 
-        <div className=" border-blue-500 w-full mt-8">{children}</div>
+        <div className=" border-blue-500 max-w-full mt-8">{children}</div>
       </body>
     </html>
   );
