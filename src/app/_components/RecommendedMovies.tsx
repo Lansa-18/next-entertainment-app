@@ -1,79 +1,40 @@
 import React from "react";
 import MovieCard from "./MovieCard";
+import { RecommendedMovieProps } from "@/lib/types";
 
-export default function RecommendedMovies() {
+export default function RecommendedMovies({
+  moviesData = [],
+}: RecommendedMovieProps) {
+  if (!Array.isArray(moviesData) || !moviesData.length) {
+    return (
+      <section className="mt-[4rem] w-full">
+        <h2 className="text-[3.2rem] font-normal tracking-[-0.5px]">
+          Recommended for you
+        </h2>
+        <p className="text-light-blue">No movies available</p>
+      </section>
+    );
+  }
+
   return (
-    <section className="w-full border-primary-red mt-[4rem]">
-      <h2 className="text-[3.2rem] tracking-[-0.5px] font-normal">
+    <section className="mt-[4rem] w-full border-primary-red">
+      <h2 className="text-[3.2rem] font-normal tracking-[-0.5px]">
         Recommended for you
       </h2>
 
-      <article className="grid gap-[4rem] grid-cols-4 py-[3.2rem] justify-between">
-        <MovieCard
-          className="w-[100%]"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
-        <MovieCard
-          className="aspect-video"
-          movieName="The Great Lands"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-          isRecommended={true}
-        />
+      <article className="grid grid-cols-4 justify-between gap-[4rem] py-[3.2rem]">
+        {moviesData.map((movie) => (
+          <MovieCard
+            key={movie.imdbID}
+            className="w-[100%]"
+            posterImage={movie.Poster}
+            movieName={movie.Title}
+            movieRating={movie.Rated}
+            movieType={movie.Type}
+            movieYear={movie.Year}
+            isRecommended={true}
+          />
+        ))}
       </article>
     </section>
   );

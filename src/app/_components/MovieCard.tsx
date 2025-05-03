@@ -15,6 +15,7 @@ export default function MovieCard({
   movieYear,
   className,
   isRecommended,
+  posterImage
 }: MovieCardProp) {
   if (!isRecommended)
     return (
@@ -60,12 +61,14 @@ export default function MovieCard({
 
   if (isRecommended)
     return (
-      <section className="card-group relative space-y-[8px]">
+      <section className="card-group relative space-y-[8px] cursor-pointer">
         <div className="">
           <Image
             className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
-            src={large}
+            src={posterImage || large}
             alt="dummy-img"
+            width={280}
+            height={174}
           />
         </div>
 

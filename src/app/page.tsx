@@ -3,16 +3,17 @@ import SearchInput from "./_components/SearchInput";
 // import MovieCard from "./_components/MovieCard";
 import MovieCarousel from "./_components/MovieCarousel";
 import RecommendedMovies from "./_components/RecommendedMovies";
-import { apikey, getMovies } from "@/services/api";
+import { getMovieById, getMoviesByType } from "@/services/api";
 
 export const metadata: Metadata = {
   title: "All Trending Content",
 };
 
 export default async function Page() {
-  const movies = await getMovies();
-  console.log(apikey)
-  
+  const movies = await getMoviesByType("movie");
+  const series = await getMoviesByType("series");
+  const movieAndSeries = [...movies, ...series];
+
   return (
     <div className="max-w-full border-primary-red">
       <SearchInput placeHolderText="Search for movies or TV series" />
@@ -27,7 +28,7 @@ export default async function Page() {
         </div>
 
         <div className="w-full">
-          <RecommendedMovies />
+          <RecommendedMovies moviesData={movieAndSeries} />
         </div>
       </main>
     </div>
