@@ -6,15 +6,7 @@ import oval from "@/public/assets/oval.svg";
 import iconCategoryMovie from "@/public/assets/icon-category-movie.svg";
 import BookmarkInteract from "./BookmarkInteract";
 import PlayOnHover from "./PlayOnHover";
-
-interface MovieCardProp {
-  movieName: string;
-  movieRating: string;
-  movieYear: number;
-  movieType: string;
-  className?: string;
-  isRecommended?: boolean;
-}
+import { MovieCardProp } from "@/lib/types";
 
 export default function MovieCard({
   movieName,
@@ -26,11 +18,11 @@ export default function MovieCard({
 }: MovieCardProp) {
   if (!isRecommended)
     return (
-      <section className={`relative card-group ${className} carousel-item`}>
+      <section className={`card-group relative ${className} carousel-item`}>
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            className="object-cover rounded-lg card-group-hover:opacity-50 transition-all duration-300"
+            className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
             fill
             src={large}
             alt="dummy-img"
@@ -38,7 +30,7 @@ export default function MovieCard({
         </div>
 
         {/* Overlay Content */}
-        <article className="absolute bottom-5 left-8 text-white z-10">
+        <article className="absolute bottom-5 left-8 z-10 text-white">
           <div className="flex items-center gap-2">
             <p className="text-[15px] opacity-75">{movieYear}</p>
             <Image src={oval} width={3} height={3} alt="oval-icon" />
@@ -60,7 +52,7 @@ export default function MovieCard({
         <div className="group">
           <BookmarkInteract />
         </div>
-        <div className="opacity-0 card-group-hover:opacity-100 transition-opacity duration-300">
+        <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
           <PlayOnHover />
         </div>
       </section>
@@ -68,16 +60,16 @@ export default function MovieCard({
 
   if (isRecommended)
     return (
-      <section className="relative space-y-[8px] card-group">
+      <section className="card-group relative space-y-[8px]">
         <div className="">
           <Image
-            className="object-cover rounded-lg card-group-hover:opacity-50 transition-all duration-300"
+            className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
             src={large}
             alt="dummy-img"
           />
         </div>
 
-        <article className=" border-primary-red ">
+        <article className="border-primary-red">
           <div className="flex items-center gap-2">
             <p className="text-[13px] opacity-75">{movieYear}</p>
             <Image src={oval} width={3} height={3} alt="oval-icon" />
@@ -99,7 +91,7 @@ export default function MovieCard({
         <div className="group">
           <BookmarkInteract />
         </div>
-        <div className="opacity-0 card-group-hover:opacity-100 transition-opacity duration-300">
+        <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
           <PlayOnHover />
         </div>
       </section>
