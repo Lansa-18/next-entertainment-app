@@ -14,7 +14,7 @@ export default function SearchInput({ placeHolderText }: SearchInputProps) {
       </label>
       <input
         id="search"
-        className="placeholder:text-white placeholder:opacity-[0.4979] bg-inherit pb-2 caret-primary-red focus:border-b focus:border-light-blue outline-none text-white text-[2.4rem]"
+        className="placeholder:text-white placeholder:opacity-[0.4979] bg-inherit w-full pb-2 caret-primary-red focus:border-b focus:border-light-blue outline-none text-white text-[2.4rem]"
         placeholder={placeHolderText}
       />
     </div>

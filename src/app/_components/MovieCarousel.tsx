@@ -12,6 +12,7 @@ export default function MovieCarousel() {
           movieRating="PG"
           movieType="Movie"
           movieYear={2019}
+          className="w-[47rem] h-[23rem]"
         />
       </div>
       <div className="carousel-item">
@@ -20,38 +21,7 @@ export default function MovieCarousel() {
           movieRating="PG"
           movieType="Movie"
           movieYear={2019}
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear={2019}
+          className="w-[47rem] h-[23rem]"
         />
       </div>
     </div>

@@ -20,12 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${outfit.className} bg-very-dark-blue antialiased flex gap-[3.6rem] min-h-screen max-w-full`}
-      >
-        <SideNavigation />
+      <body className={`${outfit.className} bg-very-dark-blue antialiased`}>
+        <div className="flex min-h-screen gap-[3.2rem] px-[3.2rem] py-[3.2rem]">
+          <div className="fixed">
+            <SideNavigation />
+          </div>
 
-        <div className=" border-blue-500 max-w-full mt-8">{children}</div>
+          <main className="ml-[11.2rem] h-[calc(100vh-6.4rem)] flex-1 overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
