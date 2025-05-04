@@ -2,55 +2,24 @@
 
 import React from "react";
 import MovieCard from "./MovieCard";
+import { MoviesCarouselProps } from "@/lib/types";
 
-export default function MovieCarousel() {
+export default function MovieCarousel({ moviesData }: MoviesCarouselProps) {
+  console.log(moviesData);
   return (
     <div className="carousel carousel-center max-w-full space-x-8 border-primary-red">
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear="2019"
-          className="h-[23rem] w-[47rem]"
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear="2019"
-          className="h-[23rem] w-[47rem]"
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear="2019"
-          className="h-[23rem] w-[47rem]"
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear="2019"
-          className="h-[23rem] w-[47rem]"
-        />
-      </div>
-      <div className="carousel-item">
-        <MovieCard
-          movieName="Beyond Earth"
-          movieRating="PG"
-          movieType="Movie"
-          movieYear="2019"
-          className="h-[23rem] w-[47rem]"
-        />
-      </div>
+      {moviesData.map((movie) => (
+        <div className="carousel-item" key={movie.imdbID}>
+          <MovieCard
+            posterImage={movie.Poster}
+            movieName={movie.Title}
+            movieRating={movie.Rated}
+            movieType={movie.Type}
+            movieYear={movie.Type}
+            className="w-[47rem] h-[23rem]"
+          />
+        </div>
+      ))}
     </div>
   );
 }

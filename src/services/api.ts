@@ -8,13 +8,12 @@ export async function getMovieById(id: string) {
   if (!response.ok) throw new Error("Failed to fetch movie.");
 
   const data = await response.json();
-
-  return data.Rated;
+  return { Rated: data.Rated, imdbRating: data.imdbRating };
 }
 
 export async function getMoviesByType(type: string) {
   const response = await fetch(
-    `${baseURL}?apikey=${apikey}&s=marvel&type=${type}&page=1`,
+    `${baseURL}?apikey=${apikey}&s=sword&type=${type}&page=1`,
   );
 
   if (!response.ok) throw new Error("Failed to fetch movies");
@@ -25,11 +24,12 @@ export async function getMoviesByType(type: string) {
 
   const moviesWithRatings = await Promise.all(
     data.Search.map(async (movie) => {
-      const rating = await getMovieById(movie.imdbID);
+      const { Rated, imdbRating } = await getMovieById(movie.imdbID);
 
       return {
         ...movie,
-        Rated: rating,
+        Rated,
+        imdbRating,
       };
     }),
   );

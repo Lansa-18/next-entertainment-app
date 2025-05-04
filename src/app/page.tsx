@@ -13,6 +13,10 @@ export default async function Page() {
   const movies = await getMoviesByType("movie");
   const series = await getMoviesByType("series");
   const movieAndSeries = [...movies, ...series];
+  const highlyRated = movieAndSeries.filter((movie) => {
+    return movie.imdbRating > 7;
+  });
+  const trendingData = highlyRated.slice(0, 6);
 
   return (
     <div className="max-w-full border-primary-red">
@@ -24,7 +28,7 @@ export default async function Page() {
         </h2>
 
         <div className="max-w-full overflow-x-hidden">
-          <MovieCarousel />
+          <MovieCarousel moviesData={trendingData} />
         </div>
 
         <div className="w-full">

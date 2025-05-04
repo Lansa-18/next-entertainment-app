@@ -15,22 +15,25 @@ export default function MovieCard({
   movieYear,
   className,
   isRecommended,
-  posterImage
+  posterImage,
 }: MovieCardProp) {
   if (!isRecommended)
     return (
       <section className={`card-group relative ${className} carousel-item`}>
-        {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="relative aspect-video w-full border-primary-red">
           <Image
             className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
+            src={posterImage || large}
+            alt={posterImage || "Movie Poster"}
             fill
-            src={large}
-            alt="dummy-img"
+            sizes="(max-width: 470px) 100vw"
           />
+
+          <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
+            <PlayOnHover />
+          </div>
         </div>
 
-        {/* Overlay Content */}
         <article className="absolute bottom-5 left-8 z-10 text-white">
           <div className="flex items-center gap-2">
             <p className="text-[15px] opacity-75">{movieYear}</p>
@@ -53,23 +56,24 @@ export default function MovieCard({
         <div className="group">
           <BookmarkInteract />
         </div>
-        <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
-          <PlayOnHover />
-        </div>
       </section>
     );
 
   if (isRecommended)
     return (
-      <section className="card-group relative space-y-[8px] cursor-pointer">
-        <div className="">
+      <section className="card-group relative cursor-pointer space-y-[8px]">
+        <div className="relative aspect-[1.61] w-full border-primary-red">
           <Image
             className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
             src={posterImage || large}
-            alt="dummy-img"
-            width={280}
-            height={174}
+            alt={posterImage || "Movie Poster"}
+            fill
+            sizes="(max-width: 280px) 100vw"
           />
+
+          <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
+            <PlayOnHover />
+          </div>
         </div>
 
         <article className="border-primary-red">
@@ -93,9 +97,6 @@ export default function MovieCard({
 
         <div className="group">
           <BookmarkInteract />
-        </div>
-        <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
-          <PlayOnHover />
         </div>
       </section>
     );

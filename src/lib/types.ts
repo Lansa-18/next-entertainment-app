@@ -26,3 +26,7 @@ export interface omdbApiResponse {
 export interface RecommendedMovieProps {
     moviesData: Movie[];
 }
+
+export interface MoviesCarouselProps {
+    moviesData: Movie[];
+}
