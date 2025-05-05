@@ -4,6 +4,7 @@ import { RecommendedMovieProps } from "@/lib/types";
 
 export default function RecommendedMovies({
   moviesData = [],
+  isRecommended,
 }: RecommendedMovieProps) {
   if (!Array.isArray(moviesData) || !moviesData.length) {
     return (
@@ -17,10 +18,14 @@ export default function RecommendedMovies({
   }
 
   return (
-    <section className="mt-[4rem] w-full border-primary-red">
-      <h2 className="text-[3.2rem] font-normal tracking-[-0.5px]">
-        Recommended for you
-      </h2>
+    <section
+      className={`${isRecommended ? "mt-[4rem]" : ""} w-full border-primary-red`}
+    >
+      {isRecommended && (
+        <h2 className="text-[3.2rem] font-normal tracking-[-0.5px]">
+          Recommended for you
+        </h2>
+      )}
 
       <article className="grid grid-cols-4 justify-between gap-[4rem] py-[3.2rem]">
         {moviesData.map((movie) => (

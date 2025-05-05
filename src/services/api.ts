@@ -11,9 +11,9 @@ export async function getMovieById(id: string) {
   return { Rated: data.Rated, imdbRating: data.imdbRating };
 }
 
-export async function getMoviesByType(type: string) {
+export async function getMoviesByType(type: string, query: string) {
   const response = await fetch(
-    `${baseURL}?apikey=${apikey}&s=sword&type=${type}&page=1`,
+    `${baseURL}?apikey=${apikey}&s=${query}&type=${type}&page=1`,
   );
 
   if (!response.ok) throw new Error("Failed to fetch movies");

@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface MovieCardProp {
   movieName: string;
   movieRating: string;
@@ -25,8 +27,13 @@ export interface omdbApiResponse {
 
 export interface RecommendedMovieProps {
     moviesData: Movie[];
+    isRecommended: boolean;
 }
 
 export interface MoviesCarouselProps {
     moviesData: Movie[];
+}
+
+export interface MainProps {
+    children: React.ReactNode;
 }
