@@ -3,7 +3,7 @@ import SearchInput from "./_components/SearchInput";
 // import MovieCard from "./_components/MovieCard";
 import MovieCarousel from "./_components/MovieCarousel";
 import RecommendedMovies from "./_components/RecommendedMovies";
-import { getMovieById, getMoviesByType } from "@/services/api";
+import { getMoviesByType } from "@/services/api";
 
 export const metadata: Metadata = {
   title: "All Trending Content",

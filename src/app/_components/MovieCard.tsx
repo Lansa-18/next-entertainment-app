@@ -34,9 +34,9 @@ export default function MovieCard({
           </div>
         </div>
 
-        <article className="absolute bottom-5 left-8 z-10 text-white">
+        <article className="absolute bottom-5 left-8 z-20 text-white">
           <div className="flex items-center gap-2">
-            <p className="text-[15px] opacity-75">{movieYear}</p>
+            <p className="text-[15px]">{movieYear}</p>
             <Image src={oval} width={3} height={3} alt="oval-icon" />
             <div className="flex items-center gap-3">
               <Image
@@ -45,16 +45,21 @@ export default function MovieCard({
                 width={12}
                 height={12}
               />
-              <span className="text-[15px] opacity-75">{movieType}</span>
+              <span className="text-[15px]">{movieType}</span>
             </div>
             <Image src={oval} width={3} height={3} alt="oval-icon" />
-            <p className="text-[15px] opacity-75">{movieRating}</p>
+            <p className="text-[15px]">{movieRating}</p>
           </div>
-          <h2 className="text-[24px]">{movieName}</h2>
+          <h2 className="text-[24px] font-medium">{movieName}</h2>
         </article>
 
         <div className="group">
           <BookmarkInteract />
+        </div>
+
+        {/* Overlay at the bottom of the image so that the texts can be seen easily. */}
+        <div className="absolute inset-x-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent  bottom-0 z-10">
+
         </div>
       </section>
     );
