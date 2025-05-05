@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import SearchInput from "../_components/SearchInput";
+import SearchInput from "../_components/SearchInputField";
 import RecommendedMovies from "../_components/RecommendedMovies";
-import { getMoviesByType } from "@/services/api";
+import { getMoviesByType } from "@/app/_lib/api";
 import Main from "../_components/Main";
 
 export const metadata: Metadata = {

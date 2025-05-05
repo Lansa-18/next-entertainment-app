@@ -36,3 +36,31 @@ export async function getMoviesByType(type: string, query: string) {
 
   return moviesWithRatings;
 }
+
+export async function searchMoviesByType(query: string, type: string) {
+  console.log(apikey);
+  const response = await fetch(
+    `${baseURL}?apikey=${apikey}&s=${query}&type=${type}&page=1`,
+  );
+
+  if (!response.ok) throw new Error("Failed in searching movies");
+
+  const data: omdbApiResponse = await response.json();
+
+  if (data.Response === "False")
+    throw new Error(`Found No result for ${query}`);
+
+  const searchedMovies = await Promise.all(
+    data.Search.map(async (movie) => {
+      const { Rated, imdbRating } = await getMovieById(movie.imdbID);
+
+      return {
+        ...movie,
+        Rated,
+        imdbRating,
+      };
+    }),
+  );
+
+  return searchedMovies;
+}
