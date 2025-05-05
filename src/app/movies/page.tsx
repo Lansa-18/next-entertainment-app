@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default async function Page() {
   const movie1 = await getMoviesByType("movie", "anime");
   const movie2 = await getMoviesByType("movie", "marvel");
-  console.log(movie1, movie2);
-  const movies = [...movie1, ...movie2];
+  const movie3 = await getMoviesByType("movie", "blade");
+  const movies = [...movie1, ...movie2, ...movie3];
 
   return (
     <div className="border-primary-red">
