@@ -50,7 +50,7 @@ export default function SearchContainer({
       } finally {
         setIsLoading(false);
       }
-    }, 300),
+    }, 500),
     [typeOfMovie, pathName, createQueryString, router],
   );
 

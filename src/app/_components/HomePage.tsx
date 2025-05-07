@@ -1,12 +1,12 @@
 "use client";
 
+import { HomepageProps, Movie } from "@/lib/types";
 import { Metadata } from "next";
-import SearchContainer from "./SearchContainer";
+import { useState } from "react";
 import Main from "./Main";
 import MovieCarousel from "./MovieCarousel";
 import RecommendedMovies from "./RecommendedMovies";
-import { useState } from "react";
-import { HomepageProps, Movie } from "@/lib/types";
+import SearchContainer from "./SearchContainer";
 import SearchResults from "./SearchResults";
 import Spinner from "./Spinner";
 // import SearchInput from "./_components/SearchInputField";
