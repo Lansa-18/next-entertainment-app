@@ -11,28 +11,59 @@ export interface MovieCardProp {
 }
 
 export interface Movie {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-  Rated: string;
-  imdbRating: string;
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
 
-export interface omdbApiResponse {
-  Search: Movie[];
-  totalResults: string;
-  Response: string;
+export interface MediaData {
+  id: number;
+  backdrop_path: string;
+  poster_path: string;
+  adult: boolean;
+  overview: string;
+  popularity: number;
+  vote_average: number;
+  vote_count: number;
+  genre_ids: number[];
+  original_language: string;
+  media_type: string;
+}
+
+export interface UnifiedMediaItem extends MediaData {
+  title?: string;
+  name?: string;
+  original_title?: string;
+  original_name?: string;
+  release_date?: string;
+  first_air_date?: string;
+  video?: boolean;
+}
+
+export interface tmdbApiResponse {
+  page: number;
+  results: UnifiedMediaItem[];
+  totalPages: number;
+  totalResults: number;
 }
 
 export interface RecommendedMovieProps {
-  moviesData: Movie[];
+  moviesData: UnifiedMediaItem[];
   isRecommended: boolean;
 }
 
 export interface MoviesCarouselProps {
-  moviesData: Movie[];
+  moviesData: UnifiedMediaItem[];
 }
 
 export interface MainProps {
@@ -46,8 +77,8 @@ export interface SearchInputFieldProps {
 }
 
 export interface HomepageProps {
-  trendingData: Movie[];
-  movieAndSeries: Movie[];
+  trendingData: UnifiedMediaItem[];
+  movieAndSeries: UnifiedMediaItem[];
 }
 
 export interface SearchContainerProps {

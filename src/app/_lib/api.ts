@@ -1,75 +1,32 @@
-// import { omdbApiResponse } from "@/lib/types";
+import { tmdbApiResponse } from "@/lib/types";
+import { API_KEY, BASE_URL } from "./constant";
 
-// export const apikey = process.env.OMDPAPIKEY;
-// const baseURL = "http://www.omdbapi.com/";
-const BASE_URL = 'https://api.themoviedb.org/3';
-const api_key = process.env.TMDB_APIKEY;
+export async function getTrendingMovies(type: string) {
+  const response = await fetch(
+    `${BASE_URL}/trending/${type}/day?api_key=${API_KEY}`,
+  );
 
-// export async function getMovieById(id: string) {
-//   const response = await fetch(`${baseURL}?i=${id}&apikey=${apikey}`);
-//   if (!response.ok) throw new Error("Failed to fetch movie.");
+  if (!response.ok) throw new Error("Failed to fetch trending movies");
+  const data: tmdbApiResponse = await response.json();
 
-//   const data = await response.json();
-//   return { Rated: data.Rated, imdbRating: data.imdbRating };
-// }
+  const formattedResults = data.results.map((item) => ({
+    ...item,
+    original_name: type === "movie" ? item.title : item.original_name,
+  }));
 
-// export async function getMoviesByType(type: string, query: string) {
-//   const response = await fetch(
-//     `${baseURL}?apikey=${apikey}&s=${query}&type=${type}&page=1`,
-//   );
+  return formattedResults;
+}
 
-//   if (!response.ok) throw new Error("Failed to fetch movies");
+export async function getPopularMovies(type: string, page: number) {
+  const response = await fetch(
+    `${BASE_URL}/${type}/popular?api_key=${API_KEY}&page=${page}`,
+  );
+  if (!response.ok) throw new Error("Failed to fetch popular movies");
 
-//   const data: omdbApiResponse = await response.json();
+  const data: tmdbApiResponse = await response.json();
+  const formattedResults = data.results.map((result) => {
+    return { ...result, media_type: type };
+  });
 
-//   if (data.Response === "False") throw new Error("No results found");
-
-//   const moviesWithRatings = await Promise.all(
-//     data.Search.map(async (movie) => {
-//       const { Rated, imdbRating } = await getMovieById(movie.imdbID);
-
-//       return {
-//         ...movie,
-//         Rated,
-//         imdbRating,
-//       };
-//     }),
-//   );
-
-//   return moviesWithRatings;
-// }
-
-// export async function searchMoviesByType(query: string, type: string) {
-//   console.log(apikey);
-//   const response = await fetch(
-//     `${baseURL}?apikey=${apikey}&s=${query}&type=${type}&page=1`,
-//   );
-
-//   if (!response.ok) throw new Error("Failed in searching movies");
-
-//   const data: omdbApiResponse = await response.json();
-
-//   if (data.Response === "False")
-//     throw new Error(`Found No result for ${query}`);
-
-//   const searchedMovies = await Promise.all(
-//     data.Search.map(async (movie) => {
-//       const { Rated, imdbRating } = await getMovieById(movie.imdbID);
-
-//       return {
-//         ...movie,
-//         Rated,
-//         imdbRating,
-//       };
-//     }),
-//   );
-
-//   return searchedMovies;
-// }
-
-export async function getPopularMovies() {
-  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${api_key}`);
-  const data = await response.json();
-
-  console.log(data)
+  return formattedResults;
 }

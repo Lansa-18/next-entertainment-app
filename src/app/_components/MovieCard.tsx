@@ -50,7 +50,7 @@ export default function MovieCard({
             <Image src={oval} width={3} height={3} alt="oval-icon" />
             <p className="text-[15px]">{movieRating}</p>
           </div>
-          <h2 className="text-[24px] font-medium">{movieName}</h2>
+          <h2 className="text-[24px]">{movieName}</h2>
         </article>
 
         <div className="group">

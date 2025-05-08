@@ -1,6 +1,7 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 import { RecommendedMovieProps } from "@/lib/types";
+import { getYearFromString, IMAGE_BASE_URL } from "../_lib/constant";
 
 export default function RecommendedMovies({
   moviesData = [],
@@ -28,18 +29,22 @@ export default function RecommendedMovies({
       )}
 
       <article className="grid grid-cols-4 justify-between gap-[4rem] py-[3.2rem]">
-        {moviesData.map((movie) => (
-          <MovieCard
-            key={movie.imdbID}
-            className="w-[100%]"
-            posterImage={movie.Poster}
-            movieName={movie.Title}
-            movieRating={movie.Rated}
-            movieType={movie.Type}
-            movieYear={movie.Year}
-            isRecommended={true}
-          />
-        ))}
+        {moviesData.map((movie) => {
+          return (
+            <MovieCard
+              key={movie.original_name}
+              className="w-[100%]"
+              posterImage={`${IMAGE_BASE_URL}${movie.poster_path}`}
+              movieName={movie.original_name || ""}
+              movieRating={movie.adult === true ? "R18" : "PG"}
+              movieType={movie.media_type}
+              movieYear={getYearFromString(
+                movie.release_date || movie.first_air_date || "",
+              )}
+              isRecommended={true}
+            />
+          );
+        })}
       </article>
     </section>
   );
