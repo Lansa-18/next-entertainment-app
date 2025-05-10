@@ -1,10 +1,11 @@
 "use client";
-import { debounce } from "lodash";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import React, { useCallback, useEffect, useState, useTransition } from "react";
-import SearchInputField from "./SearchInputField";
-import { searchMovies } from "../_lib/action";
 import { SearchContainerProps } from "@/lib/types";
+import { debounce } from "lodash";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useTransition } from "react";
+import { useSearchMovies } from "../_context/SearchMoviesContext";
+import SearchInputField from "./SearchInputField";
+import { searchForMovies } from "../_lib/api";
 
 export default function SearchContainer({
   placeholder,
@@ -15,8 +16,9 @@ export default function SearchContainer({
   const router = useRouter();
   const pathName = usePathname();
   const [isPending, startTransition] = useTransition();
-  const searchParams = useSearchParams();
-  const [value, setValue] = useState(searchParams.get("q") || "");
+  const {searchParams, searchInputValue, setSearchInputValue} = useSearchMovies();
+  // const searchParams = useSearchParams();
+  // const [value, setValue] = useState(searchParams.get("q") || "");
 
   const createQueryString = useCallback(
     (value: string) => {
@@ -35,8 +37,7 @@ export default function SearchContainer({
     debounce(async (value: string) => {
       try {
         setIsLoading(true);
-        const { data } = await searchMovies(value, typeOfMovie);
-        console.log(data);
+        const data = await searchForMovies(value, typeOfMovie);
         if (data) {
           onSearchMovies(data);
         }
@@ -62,13 +63,13 @@ export default function SearchContainer({
   }, [debouncedUpdateQuery]);
 
   const handleSearch = (value: string) => {
-    setValue(value);
+    setSearchInputValue(value);
     debouncedUpdateQuery(value);
   };
 
   return (
     <SearchInputField
-      value={value}
+      value={searchInputValue}
       onChange={handleSearch}
       placeHolderText={placeholder}
     />

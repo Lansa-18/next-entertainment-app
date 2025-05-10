@@ -38,6 +38,7 @@ export interface MediaData {
   genre_ids: number[];
   original_language: string;
   media_type: string;
+  unique_id: string;
 }
 
 export interface UnifiedMediaItem extends MediaData {
@@ -90,5 +91,6 @@ export interface SearchContainerProps {
 }
 
 export interface SearchResultsProps {
-  moviesData: Movie[];
+  moviesData: UnifiedMediaItem[];
+  searchText: string;
 }

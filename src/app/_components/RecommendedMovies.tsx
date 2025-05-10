@@ -32,10 +32,10 @@ export default function RecommendedMovies({
         {moviesData.map((movie) => {
           return (
             <MovieCard
-              key={movie.original_name}
+              key={movie.unique_id}
               className="w-[100%]"
               posterImage={`${IMAGE_BASE_URL}${movie.poster_path}`}
-              movieName={movie.original_name || ""}
+              movieName={movie.original_name || movie.original_title || ""}
               movieRating={movie.adult === true ? "R18" : "PG"}
               movieType={movie.media_type}
               movieYear={getYearFromString(

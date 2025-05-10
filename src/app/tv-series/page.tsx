@@ -1,32 +1,21 @@
 import { Metadata } from "next";
-import SearchInput from "../_components/SearchInputField";
-import Main from "../_components/Main";
-import RecommendedMovies from "../_components/RecommendedMovies";
-import { getMoviesByType } from "@/app/_lib/api";
+import { getPopularMovies } from "../_lib/api";
+import PageWrapper from "../_components/PageWrapper";
+import TvSeriesPage from "../pages/TvSeriesPage";
 
 export const metadata: Metadata = {
   title: "TV Series",
 };
 
 export default async function Page() {
-  const series1 = await getMoviesByType("series", "drama");
-  const series2 = await getMoviesByType("series", "fantasy");
-  const series3 = await getMoviesByType("series", "love");
+  const series1 = await getPopularMovies("tv", 2);
+  const series2 = await getPopularMovies("tv", 3);
+  const series3 = await getPopularMovies("tv", 4);
   const seriesArr = [...series1, ...series2, ...series3];
 
   return (
-    <div className="">
-      <SearchInput placeHolderText="Search for TV series" />
-
-      <Main>
-        <h2 className="text-[3.2rem] font-normal leading-normal tracking-[-0.5px]">
-          TV Series
-        </h2>
-
-        <div className="w-full">
-          <RecommendedMovies isRecommended={false} moviesData={seriesArr} />
-        </div>
-      </Main>
-    </div>
+    <PageWrapper>
+      <TvSeriesPage series={seriesArr} />
+    </PageWrapper>
   );
 }
