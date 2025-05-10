@@ -1,6 +1,6 @@
 "use client";
 
-import { Movie } from "@/lib/types";
+import { UnifiedMediaItem } from "@/lib/types";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 
@@ -9,8 +9,8 @@ interface SearchMoviesProviderProps {
 }
 
 interface SearchMoviesContextProp {
-  searchedMovies: Movie[];
-  setSearchedMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+  searchedMovies: UnifiedMediaItem[];
+  setSearchedMovies: React.Dispatch<React.SetStateAction<UnifiedMediaItem[]>>;
   searchInputValue: string;
   setSearchInputValue: React.Dispatch<React.SetStateAction<string>>;
   isLoading: boolean;
@@ -23,7 +23,7 @@ const SearchMoviesContext = createContext<SearchMoviesContextProp | undefined>(
 );
 
 function SearchMoviesProvider({ children }: SearchMoviesProviderProps) {
-  const [searchedMovies, setSearchedMovies] = useState<Movie[]>([]);
+  const [searchedMovies, setSearchedMovies] = useState<UnifiedMediaItem[]>([]);
   const searchParams = useSearchParams();
   const [searchInputValue, setSearchInputValue] = useState(
     searchParams.get("q") || "",

@@ -85,7 +85,7 @@ export interface HomepageProps {
 export interface SearchContainerProps {
   placeholder: string;
   typeOfMovie: string;
-  onSearchMovies: (data: Movie[]) => void;
+  onSearchMovies: (data: UnifiedMediaItem[]) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
 }
