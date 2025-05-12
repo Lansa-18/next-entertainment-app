@@ -17,6 +17,7 @@ export default function MovieCard({
   isRecommended,
   posterImage,
 }: MovieCardProp) {
+
   if (!isRecommended)
     return (
       <section className={`card-group relative ${className} carousel-item`}>
@@ -26,6 +27,7 @@ export default function MovieCard({
             src={posterImage || large}
             alt={posterImage || "Movie Poster"}
             fill
+            loading="lazy"
             sizes="(max-width: 470px) 100vw"
           />
 
@@ -58,9 +60,7 @@ export default function MovieCard({
         </div>
 
         {/* Overlay at the bottom of the image so that the texts can be seen easily. */}
-        <div className="absolute inset-x-0 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent  bottom-0 z-10">
-
-        </div>
+        <div className="absolute inset-x-0 bottom-0 z-10 h-1/2 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
       </section>
     );
 
@@ -73,6 +73,7 @@ export default function MovieCard({
             src={posterImage || large}
             alt={posterImage || "Movie Poster"}
             fill
+            loading="lazy"
             sizes="(max-width: 280px) 100vw"
           />
 

@@ -53,7 +53,7 @@ export default function MoviesPage({
         return (
           <div className="max-w-full">
             {searchContainer}
-            <SearchResults moviesData={searchedMovies} />
+            <SearchResults searchText={searchInputValue} moviesData={searchedMovies} />
           </div>
         );
       }
@@ -76,7 +76,7 @@ export default function MoviesPage({
           {searchContainer}
           <Main>
             <h2 className="text-[3.2rem] font-normal leading-normal tracking-[-0.5px]">
-              TV Series
+              Movies
             </h2>
 
             <div className="w-full">

@@ -12,6 +12,7 @@ export default async function Page() {
   const series2 = await getPopularMovies("tv", 3);
   const series3 = await getPopularMovies("tv", 4);
   const seriesArr = [...series1, ...series2, ...series3];
+  // console.log(seriesArr);
 
   return (
     <PageWrapper>
