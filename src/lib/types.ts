@@ -8,6 +8,7 @@ export interface MovieCardProp {
   className?: string;
   isRecommended?: boolean;
   posterImage?: string;
+  movie: UnifiedMediaItem;
 }
 
 export interface Movie {
@@ -39,6 +40,7 @@ export interface MediaData {
   original_language: string;
   media_type: string;
   unique_id: string;
+  isBookmarked: boolean;
 }
 
 export interface UnifiedMediaItem extends MediaData {
@@ -93,4 +95,8 @@ export interface SearchContainerProps {
 export interface SearchResultsProps {
   moviesData: UnifiedMediaItem[];
   searchText: string;
+}
+
+export interface BookmarkInteractProps {
+  movie: UnifiedMediaItem;
 }

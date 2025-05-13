@@ -1,14 +1,16 @@
-import { Metadata } from "next";
-import SearchInput from "../_components/SearchInputField";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Bookedmarked",
-};
+import PageWrapper from "../_components/PageWrapper";
+import BookmarkPage from "../pages/BookmarkPage";
+import { useEffect } from "react";
 
 export default function Page() {
+  // Forces re-render when this page is active.
+  useEffect(() => {}, []);
+
   return (
-    <div className="">
-      <SearchInput placeHolderText="Search for bookedmarked shows" />
-    </div>
+    <PageWrapper>
+      <BookmarkPage />
+    </PageWrapper>
   );
 }

@@ -16,6 +16,7 @@ export default function MovieCard({
   className,
   isRecommended,
   posterImage,
+  movie
 }: MovieCardProp) {
 
   if (!isRecommended)
@@ -56,7 +57,7 @@ export default function MovieCard({
         </article>
 
         <div className="group">
-          <BookmarkInteract />
+          <BookmarkInteract movie={movie} />
         </div>
 
         {/* Overlay at the bottom of the image so that the texts can be seen easily. */}
@@ -102,7 +103,7 @@ export default function MovieCard({
         </article>
 
         <div className="group">
-          <BookmarkInteract />
+          <BookmarkInteract movie={movie} />
         </div>
       </section>
     );

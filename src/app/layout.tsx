@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from "next/font/google";
 import SideNavigation from "./_components/SideNavigation";
+import { BookmarkedMoviesProvider } from "./_context/BookmarkedMoviesContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +28,7 @@ export default function RootLayout({
           </div>
 
           <main className="ml-[11.2rem] h-[calc(100vh-6.4rem)] flex-1 overflow-y-auto">
-            {children}
+            <BookmarkedMoviesProvider>{children}</BookmarkedMoviesProvider>
           </main>
         </div>
       </body>

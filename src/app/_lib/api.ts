@@ -14,6 +14,7 @@ export async function getTrendingMovies(type: string) {
     ...item,
     unique_id: uuidv4(),
     original_name: type === "movie" ? item.title : item.original_name,
+    isBookmarked: false,
   }));
 
   return formattedResults;
@@ -27,7 +28,12 @@ export async function getPopularMovies(type: string, page: number) {
 
   const data: tmdbApiResponse = await response.json();
   const formattedResults = data.results.map((result) => {
-    return { ...result, unique_id: uuidv4(), media_type: type };
+    return {
+      ...result,
+      unique_id: uuidv4(),
+      media_type: type,
+      isBookmarked: false,
+    };
   });
 
   return formattedResults;

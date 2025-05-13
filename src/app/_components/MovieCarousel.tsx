@@ -18,6 +18,7 @@ export default function MovieCarousel({ moviesData }: MoviesCarouselProps) {
               movieType={movie.media_type}
               movieYear={getYearFromString(movie.release_date || "")}
               className="h-[23rem] w-[47rem]"
+              movie={movie}
             />
           </div>
         );

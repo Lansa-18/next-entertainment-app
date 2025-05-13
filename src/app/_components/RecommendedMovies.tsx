@@ -42,6 +42,7 @@ export default function RecommendedMovies({
                 movie.release_date || movie.first_air_date || "",
               )}
               isRecommended={true}
+              movie={movie}
             />
           );
         })}
