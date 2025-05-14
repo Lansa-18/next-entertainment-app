@@ -29,7 +29,7 @@ export default function TvSeriesPage({ series }: TvSeriesPageProps) {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         onSearchMovies={setSearchedMovies}
-        typeOfMovie="movie"
+        typeOfMovie="tv"
         placeholder="Search for TV series"
       />
     );

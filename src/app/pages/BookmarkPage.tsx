@@ -32,7 +32,7 @@ export default function BookmarkPage() {
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         onSearchMovies={setSearchedMovies}
-        typeOfMovie="movie"
+        typeOfMovie="bookmark"
         placeholder="Search for Bookmarked Movies"
       />
     );

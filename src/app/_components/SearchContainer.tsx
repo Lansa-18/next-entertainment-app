@@ -6,6 +6,7 @@ import { useCallback, useEffect, useTransition } from "react";
 import { useSearchMovies } from "../_context/SearchMoviesContext";
 import SearchInputField from "./SearchInputField";
 import { searchForMovies } from "../_lib/api";
+import { useBookmarkedMovies } from "../_context/BookmarkedMoviesContext";
 
 export default function SearchContainer({
   placeholder,
@@ -15,8 +16,10 @@ export default function SearchContainer({
 }: SearchContainerProps) {
   const router = useRouter();
   const pathName = usePathname();
-  const [isPending, startTransition] = useTransition();
-  const {searchParams, searchInputValue, setSearchInputValue} = useSearchMovies();
+  const [, startTransition] = useTransition();
+  const { searchParams, searchInputValue, setSearchInputValue } =
+    useSearchMovies();
+  const { bookmarkedMovies } = useBookmarkedMovies();
   // const searchParams = useSearchParams();
   // const [value, setValue] = useState(searchParams.get("q") || "");
 
@@ -37,15 +40,32 @@ export default function SearchContainer({
     debounce(async (value: string) => {
       try {
         setIsLoading(true);
-        const data = await searchForMovies(value, typeOfMovie);
-        if (data) {
-          onSearchMovies(data);
+
+        if (typeOfMovie === "bookmark") {
+          const filteredBookmarks = bookmarkedMovies.filter(
+            (movie) =>
+              movie.title?.toLowerCase().includes(value.toLowerCase()) ||
+              movie.original_title
+                ?.toLowerCase()
+                .includes(value.toLowerCase()) ||
+              movie.name?.toLowerCase().includes(value.toLowerCase()) ||
+              movie.original_name?.toLowerCase().includes(value.toLowerCase()),
+          );
+
+          onSearchMovies(filteredBookmarks);
+        } else {
+          const data = await searchForMovies(value, typeOfMovie);
+          if (data) {
+            onSearchMovies(data);
+          }
         }
+
         startTransition(() => {
           router.push(`${pathName}?${createQueryString(value)}`, {
             scroll: false,
           });
         });
+
       } catch (error) {
         console.error("Search error:", error);
       } finally {
