@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import HomePage from "./pages/HomePage";
-import { getPopularMovies, getTrendingMovies } from "./_lib/api";
-import PageWrapper from "./_components/PageWrapper";
+import HomePage from "../pages/HomePage";
+import PageWrapper from "../_components/PageWrapper";
+import { getPopularMovies, getTrendingMovies } from "../_lib/api";
 
 export const metadata: Metadata = {
   title: "All Trending Content",

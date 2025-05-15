@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { getPopularMovies } from "../_lib/api";
-import PageWrapper from "../_components/PageWrapper";
-import TvSeriesPage from "../pages/TvSeriesPage";
+import { getPopularMovies } from "../../_lib/api";
+import PageWrapper from "../../_components/PageWrapper";
+import TvSeriesPage from "../../pages/TvSeriesPage";
 
 export const metadata: Metadata = {
   title: "TV Series",

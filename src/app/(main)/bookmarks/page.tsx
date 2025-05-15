@@ -1,7 +1,7 @@
 "use client";
 
-import PageWrapper from "../_components/PageWrapper";
-import BookmarkPage from "../pages/BookmarkPage";
+import PageWrapper from "../../_components/PageWrapper";
+import BookmarkPage from "../../pages/BookmarkPage";
 import { useEffect } from "react";
 
 export default function Page() {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import SideNavigation from "./_components/SideNavigation";
 import { BookmarkedMoviesProvider } from "./_context/BookmarkedMoviesContext";
 
 export const metadata: Metadata = {
@@ -22,15 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.className} bg-very-dark-blue antialiased`}>
-        <div className="flex min-h-screen gap-[3.2rem] px-[3.2rem] py-[3.2rem]">
-          <div className="fixed">
-            <SideNavigation />
-          </div>
-
-          <main className="ml-[11.2rem] h-[calc(100vh-6.4rem)] flex-1 overflow-y-auto">
-            <BookmarkedMoviesProvider>{children}</BookmarkedMoviesProvider>
-          </main>
-        </div>
+        <BookmarkedMoviesProvider>{children}</BookmarkedMoviesProvider>
       </body>
     </html>
   );
