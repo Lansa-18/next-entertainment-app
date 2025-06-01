@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} bg-very-dark-blue antialiased`}>
+      <body className={`${outfit.className} min-h-screen bg-very-dark-blue antialiased`}>
         <BookmarkedMoviesProvider>{children}</BookmarkedMoviesProvider>
       </body>
     </html>

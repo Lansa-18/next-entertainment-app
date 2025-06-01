@@ -1,7 +1,9 @@
 "use client";
 
-import imageAvatar from "@/public/assets/image-avatar.png";
+import { SideNavigationProp } from "@/lib/types";
 import logo from "@/public/assets/logo.svg";
+import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -29,7 +31,10 @@ const LinkArray = [
   },
 ];
 
-export default function SideNavigation() {
+export default function SideNavigation({
+  avatarImage,
+  isAuthorized,
+}: SideNavigationProp) {
   const pathName = usePathname();
 
   return (
@@ -54,13 +59,25 @@ export default function SideNavigation() {
         </ul>
       </div>
 
-      <Image
-        className="cursor-pointer"
-        src={imageAvatar}
-        alt="avatar-icon"
-        width={40}
-        height={40}
-      />
+      <div className="flex flex-col items-center gap-10">
+        <Image
+          className="cursor-pointer rounded-full"
+          src={avatarImage}
+          alt="avatar-icon"
+          width={40}
+          height={40}
+        />
+
+        {isAuthorized && (
+          <button
+            onClick={() => signOut({ callbackUrl: "/login" })}
+            className="cursor-pointer text-light-blue transition-colors duration-200 hover:text-primary-red"
+            title="Sign out"
+          >
+            <LogOut size={20} />
+          </button>
+        )}
+      </div>
     </aside>
   );
 }

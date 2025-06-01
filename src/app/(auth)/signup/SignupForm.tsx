@@ -112,7 +112,7 @@ export default function SignupForm() {
           className="mt-[1.6rem] rounded-[6px] bg-primary-red py-6 text-[1.5rem] font-normal leading-normal text-white duration-300 ease-linear hover:bg-white hover:text-black"
           type="submit"
         >
-          Login to your account
+          Create your account
         </button>
       </form>
     </Form>

@@ -1,5 +1,10 @@
 import React from "react";
 
+export interface SideNavigationProp {
+  avatarImage: string;
+  isAuthorized: boolean;
+}
+
 export interface MovieCardProp {
   movieName: string;
   movieRating: string;

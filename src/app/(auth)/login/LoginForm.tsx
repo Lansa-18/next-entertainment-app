@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import {
   Form,
   FormControl,
@@ -8,6 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -38,11 +40,16 @@ export default function LoginForm() {
     form.reset();
   };
 
+  const handleGoogleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    signIn("google", { callbackUrl: "/" });
+  };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-[2rem]"
+        className="flex flex-col gap-[1rem]"
       >
         <FormField
           control={form.control}
@@ -90,6 +97,25 @@ export default function LoginForm() {
         >
           Login to your account
         </button>
+
+        <article className="mx-auto mt-4 flex w-[30%] justify-between">
+          <button className="" type="button" onClick={handleGoogleSignIn}>
+            <Image
+              src="https://authjs.dev/img/providers/google.svg"
+              alt="Google logo"
+              height="34"
+              width="34"
+            />
+          </button>
+          <button className="">
+            <Image
+              src="https://authjs.dev/img/providers/github.svg"
+              alt="Google logo"
+              height="34"
+              width="34"
+            />
+          </button>
+        </article>
       </form>
     </Form>
   );
