@@ -45,6 +45,11 @@ export default function LoginForm() {
     signIn("google", { callbackUrl: "/" });
   };
 
+  const handleGithubSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    signIn("github", { callbackUrl: "/" });
+  };
+
   return (
     <Form {...form}>
       <form
@@ -107,7 +112,7 @@ export default function LoginForm() {
               width="34"
             />
           </button>
-          <button className="">
+          <button className="" type="button" onClick={handleGithubSignIn}>
             <Image
               src="https://authjs.dev/img/providers/github.svg"
               alt="Google logo"

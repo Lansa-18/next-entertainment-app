@@ -62,7 +62,7 @@ export default function SideNavigation({
       <div className="flex flex-col items-center gap-10">
         <Image
           className="cursor-pointer rounded-full"
-          src={avatarImage}
+          src={avatarImage || "/assets/image-avatar.png"}
           alt="avatar-icon"
           width={40}
           height={40}

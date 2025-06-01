@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface SideNavigationProp {
-  avatarImage: string;
+  avatarImage?: string;
   isAuthorized: boolean;
 }
 
