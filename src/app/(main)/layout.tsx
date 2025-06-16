@@ -16,11 +16,11 @@ export default async function MainLayout({
   const isAuthorized = session ? true : false;
 
   return (
-    <div className="flex min-h-screen gap-[3.2rem] px-[3.2rem] py-[3.2rem]">
-      <div className="fixed">
+    <div className="flex min-h-screen gap-[3.2rem] px-[3.2rem] custom-390:px-[2rem] py-[3.2rem] tab-port:flex-col">
+      <div className="fixed tab-port:relative">
         <SideNavigation avatarImage={avatarImage ?? undefined} isAuthorized={isAuthorized} />
       </div>
-      <main className="ml-[11.2rem] h-[calc(100vh-6.4rem)] flex-1 overflow-y-auto">
+      <main className="ml-[11.2rem] tab-port:ml-0 h-[calc(100vh-6.4rem)] flex-1 overflow-y-auto">
         {children}
       </main>
     </div>

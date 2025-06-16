@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import HomePage from "../pages/HomePage";
 import PageWrapper from "../_components/PageWrapper";
 import { getPopularMovies, getTrendingMovies } from "../_lib/api";
+import { auth } from "../_lib/auth";
 
 export const metadata: Metadata = {
   title: "All Trending Content",
@@ -18,9 +19,17 @@ export default async function Page() {
   const tv2 = await getPopularMovies("tv", 3);
   const movieAndSeries = [...movie1, ...tv1, ...movie2, ...tv2];
 
+  const session = await auth();
+  const user = session?.user;
+  console.log(user);
+
   return (
     <PageWrapper>
-      <HomePage movieAndSeries={movieAndSeries} trendingData={trendingData} />
+      <HomePage
+        user={user}
+        movieAndSeries={movieAndSeries}
+        trendingData={trendingData}
+      />
     </PageWrapper>
   );
 }

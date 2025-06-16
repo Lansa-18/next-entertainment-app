@@ -38,11 +38,17 @@ export default function SideNavigation({
   const pathName = usePathname();
 
   return (
-    <aside className="flex h-[92vh] min-w-[80px] flex-col items-center justify-between rounded-[2rem] border-primary-red bg-dark-blue px-8 py-8">
-      <div className="flex flex-col items-center gap-[7.5rem]">
-        <Image src={logo} alt="logo-icon" width={32} height={25.6} />
+    <aside className="flex h-[92vh] min-w-[80px] flex-col items-center justify-between rounded-[2rem] bg-dark-blue px-8 py-8 tab-port:h-auto tab-port:flex-row custom-500:gap-10">
+      <div className="flex flex-col items-center gap-[7.5rem] tab-port:basis-[61%] tab-port:flex-row tab-port:justify-between phone:basis-[75%] phone:gap-0">
+        <Image
+          className="phone:w-10"
+          src={logo}
+          alt="logo-icon"
+          width={32}
+          height={25.6}
+        />
 
-        <ul className="flex flex-col gap-[3.75rem]">
+        <ul className="flex flex-col gap-[3.75rem] tab-port:flex-row phone:gap-[2rem] custom-390:gap-[2.5rem]">
           {LinkArray.map((link) => (
             <li key={link.alt}>
               <Link href={link.href}>
@@ -59,9 +65,9 @@ export default function SideNavigation({
         </ul>
       </div>
 
-      <div className="flex flex-col items-center gap-10">
+      <div className="flex flex-col items-center gap-10 tab-port:flex-row  custom-500:gap-4">
         <Image
-          className="cursor-pointer rounded-full"
+          className="cursor-pointer rounded-full phone:w-11"
           src={avatarImage || "/assets/image-avatar.png"}
           alt="avatar-icon"
           width={40}
@@ -71,7 +77,7 @@ export default function SideNavigation({
         {isAuthorized && (
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="cursor-pointer text-light-blue transition-colors duration-200 hover:text-primary-red"
+            className="cursor-pointer text-light-blue transition-colors duration-200 hover:text-primary-red phone:w-11"
             title="Sign out"
           >
             <LogOut size={20} />

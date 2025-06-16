@@ -19,7 +19,7 @@ const config: Config = {
         "tab-port": { max: "61.999em" }, // 992px
         "custom-915": { max: "57.187em" }, // 915px
         "custom-850": { max: "53.124em" }, // 850px
-        "land-phone": { max: "47.999em" }, // 768px
+        "land-phone": { max: "47.999em" }, // 768px-1rem
         "custom-680": { max: "42.499em" }, // 680px
         phone: { max: "35.999em" }, // 576px
         "custom-500": { max: "31.25em" }, // 500px

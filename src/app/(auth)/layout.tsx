@@ -29,6 +29,3 @@ export default function AuthLayout({ children }: LoginLayoutProp) {
     </div>
   );
 }
-
-// absolute left-1/2 mt-[7.85rem] flex w-[30%] -translate-x-1/2
-// relative

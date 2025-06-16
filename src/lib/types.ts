@@ -1,5 +1,16 @@
 import React from "react";
 
+export interface User {
+  name: string;
+  email: string;
+  image?: string;
+}
+
+export interface UserSessionObj {
+  user: User,
+  expires: string;
+}
+
 export interface SideNavigationProp {
   avatarImage?: string;
   isAuthorized: boolean;
@@ -85,6 +96,7 @@ export interface SearchInputFieldProps {
 }
 
 export interface HomepageProps {
+  user: User;
   trendingData: UnifiedMediaItem[];
   movieAndSeries: UnifiedMediaItem[];
 }

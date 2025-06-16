@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage({
+  user,
   trendingData,
   movieAndSeries,
 }: HomepageProps) {
@@ -28,18 +29,23 @@ export default function HomePage({
     searchInputValue,
   } = useSearchMovies();
 
-
-
   const renderContent = () => {
-    // Always render SearchContainer
     const searchContainer = (
-      <SearchContainer
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        onSearchMovies={setSearchedMovies}
-        typeOfMovie="movie"
-        placeholder="Search for movies or TV series"
-      />
+      <article className="flex items-center justify-between land-phone:items-start land-phone:gap-4 land-phone:flex-col-reverse">
+        <div className="basis-1/2 land-phone:w-full">
+          <SearchContainer
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            onSearchMovies={setSearchedMovies}
+            typeOfMovie="movie"
+            placeholder="Search for movies or TV series"
+          />
+        </div>
+
+        <h1 className="text-3xl font-semibold">
+          Welcome <span className="text-primary-red">{user.name.split(' ').at(0)} 😎</span>
+        </h1>
+      </article>
     );
 
     // Loading state
@@ -59,7 +65,10 @@ export default function HomePage({
       return (
         <div className="max-w-full">
           {searchContainer}
-          <SearchResults searchText={searchInputValue} moviesData={searchedMovies} />
+          <SearchResults
+            searchText={searchInputValue}
+            moviesData={searchedMovies}
+          />
         </div>
       );
     }

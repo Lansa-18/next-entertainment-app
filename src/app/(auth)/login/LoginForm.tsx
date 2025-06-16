@@ -103,7 +103,7 @@ export default function LoginForm() {
           Login to your account
         </button>
 
-        <article className="phone:w-[40%] custom-390:w-[50%] mx-auto mt-4 flex w-[30%] justify-between">
+        <article className="mx-auto mt-4 flex w-[30%] justify-between phone:w-[40%] custom-390:w-[50%]">
           <button className="" type="button" onClick={handleGoogleSignIn}>
             <Image
               src="https://authjs.dev/img/providers/google.svg"
