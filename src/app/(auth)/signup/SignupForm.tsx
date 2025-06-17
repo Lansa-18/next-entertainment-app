@@ -13,10 +13,6 @@ import { z } from "zod";
 
 const formSchema = z
   .object({
-    fullName: z
-      .string()
-      .min(1, "Name is required")
-      .max(50, "Name must be less than 50 characters"),
     email: z
       .string()
       .email("Please enter a valid email address")
@@ -41,7 +37,6 @@ export default function SignupForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: '',
       email: "",
       password: "",
       confirmPassword: "",
@@ -59,24 +54,6 @@ export default function SignupForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-[2rem]"
       >
-        <FormField
-          control={form.control}
-          name="fullName"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <input
-                  className="w-full border-b border-light-blue bg-inherit pb-7 text-[1.5rem] text-white caret-primary-red outline-none placeholder:text-[1.5rem] placeholder:text-white placeholder:opacity-50"
-                  placeholder="Full Name"
-                  type="fullName"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage className="text-primary-red" />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="email"
@@ -115,7 +92,7 @@ export default function SignupForm() {
 
         <FormField
           control={form.control}
-          name="password"
+          name="confirmPassword"
           render={({ field }) => (
             <FormItem>
               <FormControl>
