@@ -13,7 +13,7 @@
 //     }
 
 //     return NextResponse.next();
-//   } 
+//   }
 
 //   if (!isAuthenticated) {
 //     return NextResponse.redirect(new URL('/login', req.url));
@@ -28,39 +28,43 @@
 //   ],
 // };
 
-
 // middleware.ts
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  const isAuthenticated = !!token;
-  const { pathname } = req.nextUrl;
+  console.log("Middleware processing path:", req.nextUrl.pathname);
 
   if (
-    pathname.startsWith("/api/auth") ||
-    pathname.includes("/_next/") ||
-    pathname.includes("/images/") ||
-    pathname.includes("/assets/")
+    req.nextUrl.pathname.startsWith("/api/auth") ||
+    req.nextUrl.pathname.includes("/api/auth/")
   ) {
+    console.log("Skipping auth API route");
     return NextResponse.next();
   }
-  
-  const isAuthPath = pathname === "/login" || pathname === "/signup";
 
-  if (isAuthPath && isAuthenticated) {
-    return NextResponse.redirect(new URL("/", req.url));
+  try {
+    const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+    const isAuthenticated = !!token;
+    const { pathname } = req.nextUrl;
+    const isAuthPath = pathname === "/login" || pathname === "/signup";
+
+    if (isAuthPath && isAuthenticated) {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
+
+    if (!isAuthenticated && !isAuthPath) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    return NextResponse.next();
+  } catch (error) {
+    console.error("Middleware error:", error);
+    return NextResponse.next();
   }
-
-  if (!isAuthenticated && !isAuthPath) {
-    return NextResponse.redirect(new URL("/login", req.url));
-  }
-
-  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: "/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\..*$).*)",
 };
