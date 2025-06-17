@@ -14,22 +14,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    authorized: async ({ auth }) => {
-      return !!auth;
+    async signIn({ user, account }) {
+      console.log("SignIn callback:", {
+        user: user.email,
+        account: account?.provider,
+      });
+      return true;
     },
-
-    redirect: async ({ url, baseUrl }) => {
-      console.log("Auth redirect called", { url, baseUrl });
-      return baseUrl;
+    async redirect({ url, baseUrl }) {
+      console.log("Redirect callback:", { url, baseUrl });
+      const redirectUrl = url.startsWith("/") ? `${baseUrl}${url}` : baseUrl;
+      console.log("Redirecting to:", redirectUrl);
+      return redirectUrl;
+    },
+    async session({ session }) {
+      console.log("Session callback:", { session: session.user?.email });
+      return session;
     },
   },
   pages: {
     signIn: "/login",
   },
+
+  // Adding these for production
+  useSecureCookies: process.env.NODE_ENV === "production",
   trustHost: true,
   logger: {
     error(code) {
-      console.error("AUTH ERROR", code); // 👈 Log error
+      console.error("AUTH ERROR", code);
     },
   },
 });

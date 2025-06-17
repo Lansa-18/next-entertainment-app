@@ -43,21 +43,15 @@ export default function LoginForm() {
   const handleGoogleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signIn("google", {
-      callbackUrl:
-        process.env.NODE_ENV === "production"
-          ? "https://next-entertainment-app.vercel.app/"
-          : "/",
+      callbackUrl: "/", 
       redirect: true,
     });
   };
-
+  
   const handleGithubSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signIn("github", {
-      callbackUrl:
-        process.env.NODE_ENV === "production"
-          ? "https://next-entertainment-app.vercel.app/"
-          : "/",
+      callbackUrl: "/",
       redirect: true,
     });
   };
