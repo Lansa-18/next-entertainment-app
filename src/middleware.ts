@@ -39,6 +39,15 @@ export async function middleware(req: NextRequest) {
   const isAuthenticated = !!token;
   const { pathname } = req.nextUrl;
 
+  if (
+    pathname.startsWith("/api/auth") ||
+    pathname.includes("/_next/") ||
+    pathname.includes("/images/") ||
+    pathname.includes("/assets/")
+  ) {
+    return NextResponse.next();
+  }
+  
   const isAuthPath = pathname === "/login" || pathname === "/signup";
 
   if (isAuthPath && isAuthenticated) {
