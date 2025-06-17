@@ -3,7 +3,7 @@ import React from "react";
 export interface User {
   name: string;
   email: string;
-  image?: string;
+  image: string;
 }
 
 export interface UserSessionObj {

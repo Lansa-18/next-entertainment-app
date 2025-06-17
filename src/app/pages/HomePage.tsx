@@ -9,8 +9,6 @@ import RecommendedMovies from "../_components/RecommendedMovies";
 import SearchContainer from "../_components/SearchContainer";
 import SearchResults from "../_components/SearchResults";
 import Spinner from "../_components/Spinner";
-// import SearchInput from "./_components/SearchInputField";
-// import MovieCard from "./_components/MovieCard";
 
 export const metadata: Metadata = {
   title: "All Trending Content",

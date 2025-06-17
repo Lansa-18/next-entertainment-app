@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage";
 import PageWrapper from "../_components/PageWrapper";
 import { getPopularMovies, getTrendingMovies } from "../_lib/api";
 import { auth } from "../_lib/auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "All Trending Content",
@@ -20,8 +21,18 @@ export default async function Page() {
   const movieAndSeries = [...movie1, ...tv1, ...movie2, ...tv2];
 
   const session = await auth();
-  const user = session?.user;
-  console.log(user);
+  const user = session?.user
+    ? {
+        ...session.user,
+        name: session.user.name ?? "",
+        email: session.user.email ?? "",
+        image: session.user.image ?? "",
+      }
+    : null;
+
+  if (!user) {
+    redirect("/login");
+  }
 
   return (
     <PageWrapper>
