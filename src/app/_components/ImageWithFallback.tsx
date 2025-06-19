@@ -10,6 +10,8 @@ interface ImageWithFallbackProps {
   fallbackSrc: StaticImageData;
   className?: string;
   sizes?: string;
+  width?: number;
+  height?: number;
 }
 
 export default function ImageWithFallback({
@@ -18,6 +20,8 @@ export default function ImageWithFallback({
   alt,
   sizes,
   className,
+  width,
+  height,
   ...props
 }: ImageWithFallbackProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +38,8 @@ export default function ImageWithFallback({
         src={imgSrc || fallbackSrc}
         alt={alt}
         sizes={sizes}
+        width={width}
+        height={height}
         onLoadingComplete={() => setIsLoading(false)}
         onError={() => setImgSrc(fallbackSrc.src)}
         {...props}
