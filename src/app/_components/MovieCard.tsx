@@ -7,6 +7,7 @@ import iconCategoryMovie from "@/public/assets/icon-category-movie.svg";
 import BookmarkInteract from "./BookmarkInteract";
 import PlayOnHover from "./PlayOnHover";
 import { MovieCardProp } from "@/lib/types";
+import ImageWithFallback from "./ImageWithFallback";
 
 export default function MovieCard({
   movieName,
@@ -16,19 +17,29 @@ export default function MovieCard({
   className,
   isRecommended,
   posterImage,
-  movie
+  movie,
 }: MovieCardProp) {
-
   if (!isRecommended)
     return (
-      <section className={`card-group relative ${className} carousel-item`}>
-        <div className="relative aspect-video w-full border-primary-red">
-          <Image
+      <section
+        className={`card-group relative ${className} carousel-item`}
+      >
+        <div className="relative aspect-video w-full">
+          {/* <Image
             className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
             src={posterImage || large}
             alt={posterImage || "Movie Poster"}
             fill
             loading="lazy"
+            sizes="(max-width: 470px) 100vw"
+          /> */}
+
+          <ImageWithFallback
+            className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
+            src={posterImage}
+            fallbackSrc={large}
+            alt="Movie Poster"
+            fill
             sizes="(max-width: 470px) 100vw"
           />
 
@@ -67,14 +78,23 @@ export default function MovieCard({
 
   if (isRecommended)
     return (
-      <section className="card-group relative cursor-pointer space-y-[8px]">
+      <section className="card-group relative cursor-pointer space-y-[8px] border-blue-500">
         <div className="relative aspect-[1.61] w-full border-primary-red">
-          <Image
+          {/* <Image
+              className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
+              src={posterImage || large}
+              alt={posterImage || "Movie Poster"}
+              fill
+              loading="lazy"
+              sizes="(max-width: 280px) 100vw"
+            /> */}
+
+          <ImageWithFallback
             className="rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50"
-            src={posterImage || large}
-            alt={posterImage || "Movie Poster"}
+            src={posterImage}
+            fallbackSrc={large}
             fill
-            loading="lazy"
+            alt="Movie Poster"
             sizes="(max-width: 280px) 100vw"
           />
 

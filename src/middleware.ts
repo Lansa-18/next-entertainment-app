@@ -50,6 +50,7 @@ export async function middleware(req: NextRequest) {
       secret: process.env.NEXTAUTH_SECRET,
       secureCookie: process.env.NODE_ENV === "production",
     });
+    
     const isAuthenticated = !!token;
     const { pathname } = req.nextUrl;
     const isAuthPath = pathname === "/login" || pathname === "/signup";
