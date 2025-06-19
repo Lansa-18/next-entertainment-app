@@ -88,10 +88,10 @@ Get started in just a few steps:
 
 ## Author Info
 
-*   **Lansa Kapalu**
-    *   [Portfolio](https://your-portfolio-url.com)
-    *   [LinkedIn](https://www.linkedin.com/in/lansa-kapalu/)
+*   **Lansa**
+    *   [LinkedIn](https://www.linkedin.com/in/lancer18)
     *   [GitHub](https://github.com/Lansa-18)
+    *   [Twitter](https://x.com/Lansa_18)
 
 ## Badges
 
