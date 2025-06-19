@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Next Level Entertainment Hub** 🍿
 
-## Getting Started
+Embark on a seamless entertainment experience with Next Level Entertainment Hub! Built with React and Next.js, this application offers a modern interface to discover trending movies and TV series, manage your bookmarks, and search for your favorites.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Get started in just a few steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  **Clone the Repository:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```bash
+    git clone https://github.com/Lansa-18/next-entertainment-app.git
+    ```
+2.  **Navigate to the Project Directory:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    cd next-entertainment-app
+    ```
+3.  **Install Dependencies:**
 
-## Learn More
+    ```bash
+    npm install
+    ```
+4.  **Set Up Environment Variables:**
 
-To learn more about Next.js, take a look at the following resources:
+    -   Create a `.env.local` file in the root directory.
+    -   Add your TMDB API key, access token, and authentication secrets.  See `.env.local` file in the repository
+    ```
+    NEXT_PUBLIC_TMDB_API_KEY=YOUR_TMDB_API_KEY
+    TMDB_ACCESS_TOKEN=YOUR_TMDB_ACCESS_TOKEN
+    NEXTAUTH_SECRET=YOUR_NEXTAUTH_SECRET
+    AUTH_GOOGLE_ID=YOUR_AUTH_GOOGLE_ID
+    AUTH_GOOGLE_SECRET=YOUR_AUTH_GOOGLE_SECRET
+    AUTH_GITHUB_ID=YOUR_AUTH_GITHUB_ID
+    AUTH_GITHUB_SECRET=YOUR_AUTH_GITHUB_SECRET
+    ```
+5.  **Run the Development Server:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    npm run dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1.  **Authentication**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    -   Sign up or log in using Google or GitHub.
+    -   Access protected routes after successful authentication.
+2.  **Home Page**:
+
+    -   View trending movies and TV series.
+    -   Explore recommended content tailored for you.
+3.  **Movies & TV Series Pages**:
+
+    -   Browse popular movies and TV series.
+    -   Use the search bar to find specific content.
+4.  **Bookmarks Page**:
+
+    -   Save your favorite movies and TV series to your bookmarks.
+    -   Easily manage your saved content.
+
+## Features
+
+*   **Authentication**: Secure user authentication using NextAuth.js with Google and GitHub providers.
+*   **Trending Content**: Displays trending movies and TV series fetched from the TMDB API.
+*   **Search Functionality**: Allows users to search for movies and TV series.
+*   **Bookmarks**: Enables users to bookmark their favorite movies and TV series.
+*   **Responsive Design**: Provides a seamless user experience across various devices.
+*   **Play on Hover**: Provides play button to allow users to play the video of the current movie.
+
+## Technologies Used
+
+| Category         | Technology                                                                               | Description                                                                                                                                                |
+| :--------------- | :--------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**    | [Next.js](https://nextjs.org/)                                                          | React framework for building performant web applications with features like server-side rendering and static site generation.                              |
+| **UI Library**   | [React](https://react.dev/)                                                             | A JavaScript library for building user interfaces.                                                                                                        |
+| **Styling**      | [Tailwind CSS](https://tailwindcss.com/)                                               | A utility-first CSS framework for rapidly designing custom designs.                                                                                       |
+| **UI Components** | [Shadcn UI](https://ui.shadcn.com/)                                                     | Re-usable components built using Radix UI primitives and styled with Tailwind CSS.                                                                        |
+| **Authentication** | [NextAuth.js](https://next-auth.js.org/)                                                | Complete open source authentication toolkit for Next.js applications.                                                                                   |
+| **Data Fetching**  | [TMDB API](https://www.themoviedb.org/documentation/api)                                 | A RESTful API for accessing movie, TV show, and cast information.                                                                                        |
+| **State Management** | [React Context API](https://react.dev/learn/passing-data-deeply-with-context) | A feature in react that lets us share states across components.   
+| **Form Validation** | [Zod](https://zod.dev/)                                                        | TypeScript-first schema declaration and validation library.                                                                                      |
+| **Carousel**       | [Embla Carousel](https://www.embla-carousel.com/react)                                     | A barebones but powerfull library for carousels                                                                                                   |
+| **Utility Library**| [lodash](https://lodash.com/)                                                       | A JavaScript utility library.                                                                                                    |
+| **Icons**       | [Lucide React](https://lucide.dev/)                                                        | Beautifully simple, pixel-perfect icons.                                                                                                                  |
+
+## Author Info
+
+*   **Lansa Kapalu**
+    *   [Portfolio](https://your-portfolio-url.com)
+    *   [LinkedIn](https://www.linkedin.com/in/lansa-kapalu/)
+    *   [GitHub](https://github.com/Lansa-18)
+
+## Badges
+
+[![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Shadcn UI](https://img.shields.io/badge/Shadcn_UI-000000?style=flat-square&labelColor=000000&logoColor=white)](https://ui.shadcn.com/)
+[![Zod](https://img.shields.io/badge/zod-blue?style=flat-square&logo=typescript&labelColor=blue)](https://zod.dev/)
+[![lodash](https://img.shields.io/badge/lodash-blueviolet?style=flat-square&labelColor=blueviolet)](https://lodash.com/)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://www.npmjs.com/package/dokugen)
