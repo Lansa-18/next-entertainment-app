@@ -11,8 +11,6 @@ export default function BookmarkInteract({ movie }: BookmarkInteractProps) {
   } = useBookmarkedMovies();
 
   const isBookmarked = isMovieBookmarked(movie.id);
-  // const isBookmarked = movie.isBookmarked;
-  // const isBookmarked = bookmarkedMovies.some(item => item?.id === movie?.id);
 
   const handleToggleBookmark = (e: React.MouseEvent) => {
     e.stopPropagation();

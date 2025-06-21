@@ -3,10 +3,6 @@
 import { signIn } from "next-auth/react";
 import {
   Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -35,19 +31,19 @@ export default function LoginForm() {
     },
   });
 
-  const onSubmit = (values: FormValues) => {
-    console.log(values);
-    form.reset();
-  };
+  // const onSubmit = (values: FormValues) => {
+  //   console.log(values);
+  //   form.reset();
+  // };
 
   const handleGoogleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signIn("google", {
-      callbackUrl: "/", 
+      callbackUrl: "/",
       redirect: true,
     });
   };
-  
+
   const handleGithubSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     signIn("github", {
@@ -58,7 +54,7 @@ export default function LoginForm() {
 
   return (
     <Form {...form}>
-      <form
+      {/* <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-[1rem]"
       >
@@ -101,33 +97,33 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
+      </form> */}
 
-        <button
-          className="mt-[1.6rem] rounded-[6px] bg-primary-red py-6 text-[1.5rem] font-normal leading-normal text-white duration-300 ease-linear hover:bg-white hover:text-black"
-          type="submit"
-        >
-          Login to your account
-        </button>
-
-        <article className="mx-auto mt-4 flex w-[30%] justify-between phone:w-[40%] custom-390:w-[50%]">
+      <article className="mx-auto mt-4 w-full space-y-6">
+        <div className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
+          <h3 className="text-2xl font-bold">Sign In with Google</h3>
           <button className="" type="button" onClick={handleGoogleSignIn}>
             <Image
               src="https://authjs.dev/img/providers/google.svg"
               alt="Google logo"
-              height="34"
-              width="34"
+              height="24"
+              width="24"
             />
           </button>
+        </div>
+
+        <div className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
+          <h3 className="text-2xl font-bold">Sign In with Github</h3>
           <button className="" type="button" onClick={handleGithubSignIn}>
             <Image
               src="https://authjs.dev/img/providers/github.svg"
               alt="Google logo"
-              height="34"
-              width="34"
+              height="24"
+              width="24"
             />
           </button>
-        </article>
-      </form>
+        </div>
+      </article>
     </Form>
   );
 }
