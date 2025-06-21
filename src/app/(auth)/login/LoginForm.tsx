@@ -1,9 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import {
-  Form,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -31,10 +29,10 @@ export default function LoginForm() {
     },
   });
 
-  // const onSubmit = (values: FormValues) => {
-  //   console.log(values);
-  //   form.reset();
-  // };
+  const onSubmit = (values: FormValues) => {
+    console.log(values);
+    form.reset();
+  };
 
   const handleGoogleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -54,11 +52,11 @@ export default function LoginForm() {
 
   return (
     <Form {...form}>
-      {/* <form
+      <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-[1rem]"
       >
-        <FormField
+        {/* <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
@@ -76,9 +74,9 @@ export default function LoginForm() {
               </FormControl>
             </FormItem>
           )}
-        />
+        /> */}
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="password"
           render={({ field }) => (
@@ -96,13 +94,14 @@ export default function LoginForm() {
               </FormControl>
             </FormItem>
           )}
-        />
-      </form> */}
-
-      <article className="mx-auto mt-4 w-full space-y-6">
-        <div className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
-          <h3 className="text-2xl font-bold">Sign In with Google</h3>
-          <button className="" type="button" onClick={handleGoogleSignIn}>
+        /> */}
+        <article className="mx-auto mt-4 w-full space-y-6">
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
+          >
+            <h3 className="text-2xl font-bold">Sign In with Google</h3>
             <Image
               src="https://authjs.dev/img/providers/google.svg"
               alt="Google logo"
@@ -110,11 +109,13 @@ export default function LoginForm() {
               width="24"
             />
           </button>
-        </div>
 
-        <div className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
-          <h3 className="text-2xl font-bold">Sign In with Github</h3>
-          <button className="" type="button" onClick={handleGithubSignIn}>
+          <button
+            type="button"
+            onClick={handleGithubSignIn}
+            className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
+          >
+            <h3 className="text-2xl font-bold">Sign In with Github</h3>
             <Image
               src="https://authjs.dev/img/providers/github.svg"
               alt="Google logo"
@@ -122,8 +123,8 @@ export default function LoginForm() {
               width="24"
             />
           </button>
-        </div>
-      </article>
+        </article>
+      </form>
     </Form>
   );
 }
