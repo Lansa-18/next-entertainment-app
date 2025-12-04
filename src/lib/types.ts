@@ -7,7 +7,7 @@ export interface User {
 }
 
 export interface UserSessionObj {
-  user: User,
+  user: User;
   expires: string;
 }
 
@@ -25,6 +25,7 @@ export interface MovieCardProp {
   isRecommended?: boolean;
   posterImage?: string;
   movie: UnifiedMediaItem;
+  priority?: boolean; // For prioritizing above-the-fold images
 }
 
 export interface Movie {

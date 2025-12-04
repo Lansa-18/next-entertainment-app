@@ -28,8 +28,8 @@ export default function RecommendedMovies({
         </h2>
       )}
 
-      <article className="grid grid-cols-4 tab-port:grid-cols-3 land-phone:grid-cols-2 phone:grid-cols-1 justify-between gap-[4rem] py-[3.2rem]">
-        {moviesData.map((movie) => {
+      <article className="grid grid-cols-4 justify-between gap-[4rem] py-[3.2rem] tab-port:grid-cols-3 land-phone:grid-cols-2 phone:grid-cols-1">
+        {moviesData.map((movie, index) => {
           return (
             <MovieCard
               key={movie.unique_id}
@@ -43,6 +43,7 @@ export default function RecommendedMovies({
               )}
               isRecommended={true}
               movie={movie}
+              priority={index < 8} // Prioritize first 8 visible images (2 rows of 4)
             />
           );
         })}

@@ -99,7 +99,7 @@ export default function LoginForm() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
+            className="flex w-full items-center justify-center gap-6 text-white rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
           >
             <h3 className="text-2xl font-bold">Sign In with Google</h3>
             <Image
@@ -113,7 +113,7 @@ export default function LoginForm() {
           <button
             type="button"
             onClick={handleGithubSignIn}
-            className="flex w-full items-center justify-center gap-6 rounded-xl border border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
+            className="flex w-full items-center justify-center gap-6 rounded-xl border text-white border-light-blue py-6 transition-all duration-300 ease-in-out hover:bg-white hover:text-black"
           >
             <h3 className="text-2xl font-bold">Sign In with Github</h3>
             <Image

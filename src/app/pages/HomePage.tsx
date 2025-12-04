@@ -40,7 +40,7 @@ export default function HomePage({
           />
         </div>
 
-        <h1 className="text-3xl font-semibold">
+        <h1 className="text-white text-3xl font-semibold">
           Welcome <span className="text-primary-red">{user.name.split(' ').at(0)} 😎</span>
         </h1>
       </article>

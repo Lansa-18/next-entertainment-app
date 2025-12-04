@@ -8,11 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const series1 = await getPopularMovies("tv", 2);
-  const series2 = await getPopularMovies("tv", 3);
-  const series3 = await getPopularMovies("tv", 4);
-  const seriesArr = [...series1, ...series2, ...series3];
-  // console.log(seriesArr);
+  const series1 = await getPopularMovies("tv", 3);
+  const seriesArr = [...series1];
 
   return (
     <PageWrapper>

@@ -7,7 +7,7 @@ import iconCategoryMovie from "@/public/assets/icon-category-movie.svg";
 import BookmarkInteract from "./BookmarkInteract";
 import PlayOnHover from "./PlayOnHover";
 import { MovieCardProp } from "@/lib/types";
-import Spinner from "./Spinner";
+import SkeletonMovieCard from "./SkeletonMovieCard";
 
 export default function MovieCard({
   movieName,
@@ -18,28 +18,32 @@ export default function MovieCard({
   isRecommended,
   posterImage,
   movie,
+  priority = false, // Add priority prop for above-the-fold images
 }: MovieCardProp) {
   const [imageLoading, setImageLoading] = useState(true);
 
   if (!isRecommended)
     return (
       <section className={`card-group relative ${className} carousel-item`}>
-        <div className="relative aspect-video w-full">
-          {imageLoading && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Spinner />
-            </div>
-          )}
+        {imageLoading && (
+          <SkeletonMovieCard
+            isRecommended={false}
+            className="absolute inset-0"
+          />
+        )}
+        <div className="relative aspect-video h-full w-full">
           <Image
             className={`rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50 ${
               imageLoading ? "opacity-0" : "opacity-100"
             }`}
             src={posterImage || large}
-            alt={posterImage || "Movie Poster"}
+            alt={`${movieName} poster` || "Movie Poster"}
             fill
-            loading="lazy"
-            sizes="(max-width: 470px) 100vw"
-            onLoadingComplete={() => setImageLoading(false)}
+            loading={priority ? undefined : "lazy"}
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 470px"
+            quality={40}
+            onLoad={() => setImageLoading(false)}
           />
 
           <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">
@@ -77,24 +81,26 @@ export default function MovieCard({
 
   if (isRecommended)
     return (
-      <section className="card-group relative cursor-pointer space-y-[8px] border-blue-500">
-        <div className="relative aspect-[1.61] w-full border-primary-red">
-          {imageLoading && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Spinner />
-            </div>
-          )}
-
+      <section className="card-group relative cursor-pointer space-y-[8px]">
+        {imageLoading && (
+          <SkeletonMovieCard
+            isRecommended={true}
+            className="absolute inset-0"
+          />
+        )}
+        <div className="relative aspect-[1.61] w-full">
           <Image
             className={`rounded-lg object-cover transition-all duration-300 card-group-hover:opacity-50 ${
               imageLoading ? "opacity-0" : "opacity-100"
             }`}
             src={posterImage || large}
-            alt={posterImage || "Movie Poster"}
+            alt={`${movieName} poster` || "Movie Poster"}
             fill
-            loading="lazy"
-            sizes="(max-width: 280px) 100vw"
-            onLoadingComplete={() => setImageLoading(false)}
+            loading={priority ? undefined : "lazy"}
+            priority={priority}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
+            quality={40}
+            onLoad={() => setImageLoading(false)}
           />
 
           <div className="opacity-0 transition-opacity duration-300 card-group-hover:opacity-100">

@@ -12,13 +12,11 @@ export const metadata: Metadata = {
 export default async function Page() {
   const trendingMovie = await getTrendingMovies("movie");
   const trendingTvSeries = await getTrendingMovies("tv");
-  const trendingData = [...trendingMovie, ...trendingTvSeries].slice(0, 15);
+  const trendingData = [...trendingMovie, ...trendingTvSeries].slice(0, 13);
 
   const movie1 = await getPopularMovies("movie", 2);
-  const movie2 = await getPopularMovies("movie", 3);
   const tv1 = await getPopularMovies("tv", 2);
-  const tv2 = await getPopularMovies("tv", 3);
-  const movieAndSeries = [...movie1, ...tv1, ...movie2, ...tv2];
+  const movieAndSeries = [...movie1, ...tv1];
 
   const session = await auth();
   const user = session?.user
